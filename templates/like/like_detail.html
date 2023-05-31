@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+LIKE
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/product_items.css' %}">
+{% endblock style %}
+{% block content %}
+<section class="main-section">
+  <div class="main-items">
+    {% if like_total > 0 %}
+      {% for like_product in like_products %}
+        <div class="main-item">
+          <div class="image-item-div">
+            <div class="image-div">
+              <a href="{% url 'product_detail' like_product.product.id %}">
+                <img src="{{ like_product.product.image.url }}" alt="{{ like_product.product.name }}" class="content-image" />
+              </a>
+            </div>
+            <div class="item-info">
+              <p class="product-about">{{ like_product.product.description }}</p>
+              <p class="product-name">{{ like_product.product.name }}</p>
+              <div class="product-brand">
+                <p class="product-name">Brand:</p>
+                <p class="product-name">{{ like_product.product.brand }}</p>
+              </div>
+              <div class="product-brand product-model">
+                <p class="product-name">Model:</p>
+                <p class="product-name">{{ like_product.product.model }}</p>
+              </div>
+              <div class="follow-and-cart-icons">
+                <a href="{% url 'delete_like_product' like_product.id %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="follow-item-icons">
+                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                  </svg>
+                </a>
+                <a href="{% url 'add_to_cart' like_product.product.id %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+                </a>
+              </div>
+              <p class="old-price"><del>{{ like_product.product.old_price }}</del></p>
+              <p class="new-price">{{ like_product.product.new_price }}</p>
+              <a href="{% url 'product_detail' like_product.product.id %}" class="view-product-a">
+                <p class="view-product">Mahsulotni ko'rish</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="empty-like">No liked products found.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

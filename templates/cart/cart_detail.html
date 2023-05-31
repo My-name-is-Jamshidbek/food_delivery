@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+CART
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/cart_detail.css' %}">
+{% endblock style %}
+
+{% block content %}
+<section class="main-section">
+  <div class="Cart-Container">
+    <div class="Header">
+      <h3 class="Heading">Xarid savatchasi</h3>
+      <h5 class="Action">Hammasini o'chirish</h5>
+    </div>
+    {% for product in cart_products %}
+      <div class="Cart-Items">
+        <div class="image-box">
+          <img src="{{ product.product.image.url }}" style="height: 120px" />
+        </div>
+        <div class="about">
+          <h1 class="title">{{ product.product.brand }}</h1>
+          <h3 class="subtitle">{{ product.product.model }}</h3>
+        </div>
+        <div class="counter">
+          <a href="{% url 'add_to_cart' product_id=product.product.id %}">
+            <div class="btn">+</div>
+          </a>
+          <div class="count">{{ product.quantity }}</div>
+          <a href="{% url 'delete_cart_product' cart_product_id=product.id %}">
+            <div class="btn">-</div>
+          </a>
+        </div>
+        <div class="prices">
+          <div class="amount">${{ product.product.price }}</div>
+          <div class="remove"><u>O'chirish</u></div>
+        </div>
+      </div>
+    {% endfor %}
+    <hr />
+    <div class="checkout">
+      <div class="total">
+        <div>
+          <div class="Subtotal">Mahsulotlar soni</div>
+          <div class="items">{{ cuantity }} ta</div>
+        </div>
+        <div class="total-amount">{{ cart_total }}</div>
+      </div>
+      <button class="button">Buyurtma berish</button>
+    </div>
+  </div>
+</section>
+{% endblock %}

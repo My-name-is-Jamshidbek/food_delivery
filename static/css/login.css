@@ -1,0 +1,84 @@
+.main-section{
+    width: 100%;
+}
+
+.sign-in-div{
+    display: flex;
+}
+
+.sign-in-div form{
+    width: 50%;
+}
+.sign-in-div .img-div{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-div img{
+    width: 80%;
+    height: 500px;
+}
+
+.main-section form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup{
+    display: flex;
+    flex-direction: column;
+
+    padding: 50px;
+}
+
+.signin-title{
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+label{
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 3px;
+}
+
+.login-input{
+    width: 400px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #cecccc;
+}
+
+.login-input:focus{
+    outline: none;
+}
+
+.login-button{
+    width: 400px;
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px;
+    border-radius: 20px;
+    border: 2px solid rgb(255,147,7);
+    background: rgb(255,147,7);
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-button:hover{
+    background: #fff;
+    color: rgb(255,147,7);
+}

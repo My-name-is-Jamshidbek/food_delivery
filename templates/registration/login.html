@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+LOGIN
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock style %}
+
+{% block content %}
+<section class="main-section">
+    <div class="sign-in-div">
+        <div class="img-div">
+            <img src="{% static '/img/sign_in.png' %}" />
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="signin">
+                <p class="signin-title">Tizimga kirish</p>
+                <label>Foydalanuvchi elektron pochta manzili</label>
+                <input type="text" name="{{ form.username.name }}" class="login-input" required />
+                <label>Parol</label>
+                <input type="password" name="{{ form.password.name }}" class="login-input" required />
+                <button type="submit" class="login-button">Tizimga kirish</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
